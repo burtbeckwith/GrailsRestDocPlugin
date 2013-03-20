@@ -1,0 +1,1 @@
+ant.delete(dir: "${basedir}/grails-app/views/restDocTemplates",)
