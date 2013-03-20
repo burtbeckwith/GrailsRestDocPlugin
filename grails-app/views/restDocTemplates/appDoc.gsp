@@ -23,7 +23,6 @@
 <% def controllerDescription = it.descController
 def controllerActions = it.controllerActions %>
 
-<HR>
 <u><h3 class="controllerInfoHeader">${it?.getInfoController()}</h3></u>
 
 <g:if test="${controllerDescription}">${controllerDescription}</g:if>
@@ -31,7 +30,7 @@ def controllerActions = it.controllerActions %>
 <div>
 
 	<HR>
-	<g:each in="${controllerActions}">
+	<g:each status="i" in="${controllerActions}" var="it">
 		<% def commentDoc = it?.commentDoc
 		   def paramsMap = commentDoc?.paramsMap		   
 	       def httpMethod = commentDoc?.httpMethod?.toUpperCase()
@@ -47,8 +46,8 @@ def controllerActions = it.controllerActions %>
 			<g:if test="${paramsMap}">
 				<p>
 					<b><g:message code="paramsMsg"/>:</b><br/>
-					<g:each in="${paramsMap?.keySet()}">
-						<u>${it}</u>: ${paramsMap.get(it)}<br/>
+					<g:each in="${paramsMap?.keySet()}"  var="paramKey">
+						<u>${paramKey}</u>: ${paramsMap.get(paramKey)}<br/>
 					</g:each>
 				</p>
 			</g:if>
@@ -58,7 +57,7 @@ def controllerActions = it.controllerActions %>
 				<p><b><g:message code="responseMsg"/>:</b><br/>${result}</p>
 			</g:if>
 			</div>
-		<HR>
+		<HR ${ (i == controllerActions?.size() -1) ? "color='#4c4c4c'" : ""}>
 	</g:each>
 
 </div>

@@ -51,7 +51,7 @@ class RestDocumentationService {
 				}
 			}
 			log.debug("controller: ${controller.getLogicalPropertyName()}" + 
-				" - Actions number: ${methodSet?.size()}")
+				" - Number of actions: ${methodSet?.size()}")
 			controllerToActionsMap.put(controller.getLogicalPropertyName(), methodSet)
 		}
 		List fileNames = new ArrayList()
@@ -94,20 +94,21 @@ class RestDocumentationService {
 	}
 	
 	private void generateControllerDoc(ControllerDoc controllerDoc) {
-		log.debug(" --- generateControllerDoc")
 		String renderedSrc = groovyPageRenderer.render (
 			view:"/restDocTemplates/controllerDoc", model: [controllerDoc: controllerDoc]);
 		FileOutputTool output = new FileOutputTool();
-		output.writeToOutput(
-			"${controllerDocPath}${fs}${controllerDoc.logicalPropertyName}.gsp", renderedSrc);
+		String outputPath = "${controllerDocPath}${fs}${controllerDoc.logicalPropertyName}.gsp"
+		log.debug(" --- generateControllerDoc - outputPath: ${outputPath}")
+		output.writeToOutput(outputPath, renderedSrc);
 	}
 	
 	private void generateAppDoc(List<ControllerDoc> controllerDocs) {
-		log.debug(" --- generateAppDoc")
 		String renderedSrc = groovyPageRenderer.render (
 			view:"/restDocTemplates/appDoc", model: [controllerDocs: controllerDocs]);
 		FileOutputTool output = new FileOutputTool();
-		output.writeToOutput("${controllerDocPath}${fs}index.gsp", renderedSrc);
+		String outputPath = "${controllerDocPath}${fs}index.gsp"
+		log.debug(" --- generateAppDoc - outputPath: ${outputPath}")
+		output.writeToOutput(outputPath, renderedSrc);
 	}
 	
 	private String cleanComment(String comment) {
@@ -138,7 +139,7 @@ class RestDocumentationService {
 	
 	private void parseControllerComment(
 		ControllerDoc controllerDoc, String comment) {
-		log.debug(" --- parseControllerComment: ${comment}")
+		log.debug(" --- parseControllerComment")
 		if(!comment || "".equals(comment)) return;
 		comment = comment.replace("*", "");
 		String nextToken = getNextToken(comment, classTokens)

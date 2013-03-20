@@ -3,7 +3,7 @@
   <authorEmail>gruposp2p@gmail.com</authorEmail>
   <title>Rest Dococumentation Plugin</title>
   <description>		Plugin that generate REST based docs from annotated controller actions.</description>
-  <documentation>http://grails.org/plugin/rest-doc-plugin</documentation>
+  <documentation>https://github.com/jgzornoza/GrailsRestDocPlugin/wiki</documentation>
   <type>RestDocPluginGrailsPlugin</type>
   <resources>
     <resource>RestDocPluginUrlMappings</resource>

@@ -15,13 +15,13 @@ class RestDocPluginGrailsPlugin {
 		Plugin that generate REST based docs from annotated controller actions.'''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/rest-doc-plugin"
+    def documentation = "https://github.com/jgzornoza/GrailsRestDocPlugin/wiki"
 
     // Extra (optional) plugin metadata
 
     def license = "APACHE"
 
-    def organization = [ name: "Internet Voting System", url: "https://github.com/jgzornoza/SistemaVotacion" ]
+    def organization = [ name: "Jose Javier García", url: "http://www.gruposp2p.org" ]
 
     // Any additional developers beyond the author specified above.
 //    def developers = [ [ name: "Joe Bloggs", email: "joe@bloggs.net" ]]
