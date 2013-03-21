@@ -1,9 +1,9 @@
 <plugin name='rest-doc-plugin' version='0.2' grailsVersion='2.0 &gt; *'>
   <author>Jose J. García Zornoza</author>
   <authorEmail>gruposp2p@gmail.com</authorEmail>
-  <title>Rest Dococumentation Plugin</title>
+  <title>Rest Documentation Plugin</title>
   <description>		Plugin that generate REST based docs from annotated controller actions.</description>
-  <documentation>https://github.com/jgzornoza/GrailsRestDocPlugin/wiki</documentation>
+  <documentation>https://github.com/jgzornoza/GrailsRestDocPlugin</documentation>
   <type>RestDocPluginGrailsPlugin</type>
   <resources>
     <resource>RestDocPluginUrlMappings</resource>
