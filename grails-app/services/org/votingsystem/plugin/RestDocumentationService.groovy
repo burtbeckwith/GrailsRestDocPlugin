@@ -27,7 +27,8 @@ import org.codehaus.groovy.control.CompilePhase
 class RestDocumentationService {
 	
 	public static final List classTokens = ["@infoController", "@descController", "@author"]
-	public static final List methodTokens = ["@httpMethod", "@param", "@return"]
+	public static final List methodTokens = ["@httpMethod", "@param", "@return", "@ETag", 
+		"@requestHeader", "@responseHeader", "@urlSufix"]
 
 	def grailsApplication
 	grails.gsp.PageRenderer groovyPageRenderer
@@ -207,18 +208,38 @@ class RestDocumentationService {
 				comment = comment.substring(tokenIdx + nextToken?.length())
 			}
 			if("@param".equals(lastToken)) {
-				String[] tokenTextSplitted = tokenText.split("\\s+");//this groups all whitespaces as a delimiter.
-				if(tokenTextSplitted.size() > 0) {
-					commentDoc.addParam(tokenTextSplitted[0], tokenText.substring(tokenTextSplitted[0].length()) )
-				} else commentDoc.addParam(tokenTextSplitted[0],"")
-				
-			} else if("@httpMethod".equals(lastToken)) {
+				String[] paramAndDescription = getParamAndDescription(tokenText)
+				commentDoc.addParam(paramAndDescription[0],paramAndDescription[1])
+			} else if("@ETag".equals(lastToken)){
+				String[] paramAndDescription = getParamAndDescription(tokenText)
+				commentDoc.addETag(paramAndDescription[0],paramAndDescription[1])
+			} else if("@requestHeader".equals(lastToken)){
+				String[] paramAndDescription = getParamAndDescription(tokenText)
+				commentDoc.addRequestHeader(paramAndDescription[0],paramAndDescription[1])
+			} else if("@responseHeader".equals(lastToken)){
+				String[] paramAndDescription = getParamAndDescription(tokenText)
+				commentDoc.addResponseHeader(paramAndDescription[0],paramAndDescription[1])
+			} else if("@urlSufix".equals(lastToken)){
+				String[] paramAndDescription = getParamAndDescription(tokenText)
+				commentDoc.addUrlSufix(paramAndDescription[0],paramAndDescription[1])
+			}  else if("@httpMethod".equals(lastToken)) {
 				commentDoc.httpMethod = tokenText.trim()
 			} else if("@return".equals(lastToken)) {
 				commentDoc.result = tokenText.trim()
 			}
 		}
 		return commentDoc;
+	}
+	
+	private String[] getParamAndDescription(String tokenText) {
+		if(!tokenText) return ["", ""].toArray()
+		List result
+		String[] tokenTextSplitted = tokenText.split("\\s+");//this groups all whitespaces as a delimiter.
+		if(tokenTextSplitted.size() > 0) {
+			result = [tokenTextSplitted[0].trim(),
+				tokenText.substring(tokenTextSplitted[0].length()).trim()]
+		} else result = [tokenTextSplitted[0].trim(),""]
+		return result.toArray()
 	}
 	
 	private String getNextToken(String comment, List tokenList) {

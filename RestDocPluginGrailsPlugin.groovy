@@ -1,6 +1,6 @@
 class RestDocPluginGrailsPlugin {
     // the plugin version
-    def version = "0.1"
+    def version = "0.2"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.0 > *"
     // resources that are excluded from plugin packaging
@@ -9,7 +9,7 @@ class RestDocPluginGrailsPlugin {
     ]
 
     def title = "Rest Dococumentation Plugin" // Headline display name of the plugin
-    def author = "José J. García"
+    def author = "Jose J. García Zornoza"
     def authorEmail = "gruposp2p@gmail.com"
     def description = '''\
 		Plugin that generate REST based docs from annotated controller actions.'''
@@ -21,7 +21,7 @@ class RestDocPluginGrailsPlugin {
 
     def license = "APACHE"
 
-    def organization = [ name: "Jose Javier García", url: "http://www.gruposp2p.org" ]
+    def organization = [ name: "Jose Javier García Zornoza", url: "http://www.gruposp2p.org" ]
 
     // Any additional developers beyond the author specified above.
 //    def developers = [ [ name: "Joe Bloggs", email: "joe@bloggs.net" ]]

@@ -1,5 +1,5 @@
-<plugin name='rest-doc-plugin' version='0.1' grailsVersion='2.0 &gt; *'>
-  <author>José J. García</author>
+<plugin name='rest-doc-plugin' version='0.2' grailsVersion='2.0 &gt; *'>
+  <author>Jose J. García Zornoza</author>
   <authorEmail>gruposp2p@gmail.com</authorEmail>
   <title>Rest Dococumentation Plugin</title>
   <description>		Plugin that generate REST based docs from annotated controller actions.</description>
