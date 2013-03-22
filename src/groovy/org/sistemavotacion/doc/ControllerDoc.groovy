@@ -1,61 +1,43 @@
-package org.sistemavotacion.doc;
+package org.sistemavotacion.doc
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import org.apache.commons.lang.WordUtils;
+import org.apache.commons.lang.WordUtils
 
 /**
  * @author jgzornoza
  * Licencia: https://github.com/jgzornoza/GrailsRestDocPlugin/blob/master/licencia.txt
  */
-public class ControllerDoc {
+class ControllerDoc {
 
-	Map<String, ControllerActionDoc> methodControllerActionDocMap = 
-			new HashMap<String, ControllerActionDoc>();
+	Map<String, ControllerActionDoc> methodControllerActionDocMap = [:]
 
-	private String infoController = null;
-	private String descController = null;
-	private String controllerClassName = null;
-	private String logicalPropertyName = null;
-	
-			
-	public ControllerDoc(String className){
-		this.controllerClassName = className;
-		if(className != null && className.indexOf("Controller") >=0) {
+	String infoController
+	String descController
+	private String controllerClassName
+	private String logicalPropertyName
+
+	ControllerDoc(String className) {
+		controllerClassName = className
+		if(className?.indexOf("Controller") >=0) {
 			logicalPropertyName = WordUtils.uncapitalize(
-				className.substring(0, className.indexOf("Controller")));
+				className.substring(0, className.indexOf("Controller")))
 		}
 	}
-	
-	public Collection<ControllerActionDoc> getControllerActions() {
-		return methodControllerActionDocMap.values();
+
+	Collection<ControllerActionDoc> getControllerActions() {
+		return methodControllerActionDocMap.values()
 	}
-	
-	public void addControllerAction(String method, 
+
+	void addControllerAction(String method,
 		ControllerActionDoc controllerActionDoc) {
-		methodControllerActionDocMap.put(method, controllerActionDoc);
+		methodControllerActionDocMap.put(method, controllerActionDoc)
 	}
 
-	public String getInfoController() {
-		if(infoController == null) return logicalPropertyName;
-		return infoController;
-	}
-	
-	public String getLogicalPropertyName() {
-		return logicalPropertyName;
+	String getInfoController() {
+		if(infoController == null) return logicalPropertyName
+		return infoController
 	}
 
-	public void setInfoController(String infoController) {
-		this.infoController = infoController;
+	String getLogicalPropertyName() {
+		return logicalPropertyName
 	}
-
-	public String getDescController() {
-		return descController;
-	}
-
-	public void setDescController(String descController) {
-		this.descController = descController;
-	}
-	
 }

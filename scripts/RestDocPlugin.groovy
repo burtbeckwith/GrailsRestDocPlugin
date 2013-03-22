@@ -1,13 +1,10 @@
 includeTargets << grailsScript("_GrailsBootstrap")
 includeTargets << grailsScript("_GrailsRun")
 
-
-target(default: "Generates REST documentation from controllers") {
+target(restDocPlugin: "Generates REST documentation from controllers") {
 	depends(configureProxy, packageApp, classpath, loadApp, configureApp)
-    println " ---- Generating REST documentation from controllers"
-	def restDocumentationService = appCtx.getBean('restDocumentationService')
-	restDocumentationService.generateDocs()
+	println " ---- Generating REST documentation from controllers"
+	appCtx.restDocumentationService.generateDocs()
 }
 
-
-
+setDefaultTarget 'restDocPlugin'

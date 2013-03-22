@@ -17,6 +17,5 @@ class RestDocController {
 	
 	def showControllerDoc() {
 		render(view:params.previousController)
-		return false
 	}
 }
